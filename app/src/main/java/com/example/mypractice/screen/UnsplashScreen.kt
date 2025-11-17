@@ -1,6 +1,7 @@
 package com.example.mypractice.screen
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,13 +18,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import coil.compose.AsyncImage
 import coil.compose.rememberAsyncImagePainter
+import com.example.mypractice.models.UnsplashPhoto
 import com.example.mypractice.viewmodels.UnsplashViewModel
 
 @Composable
-fun UnsplashScreen(viewModel: UnsplashViewModel) {
+fun UnsplashScreen(
+    viewModel: UnsplashViewModel,
+                   onImageClick: (UnsplashPhoto) -> Unit) {
 
     val photos by viewModel.photos.collectAsState()
 
@@ -40,6 +42,7 @@ fun UnsplashScreen(viewModel: UnsplashViewModel) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(8.dp)
+                    .clickable{ onImageClick(photo) }
             ) {
 
                 Image(
