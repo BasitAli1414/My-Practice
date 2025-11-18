@@ -1,4 +1,4 @@
-package com.example.mypractice.screen
+package com.example.mypractice.presentation.ui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -19,8 +19,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
-import com.example.mypractice.models.UnsplashPhoto
-import com.example.mypractice.viewmodels.UnsplashViewModel
+import com.example.mypractice.domain.model.UnsplashPhoto
+import com.example.mypractice.presentation.viewmodels.UnsplashViewModel
 
 @Composable
 fun UnsplashScreen(

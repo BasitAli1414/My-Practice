@@ -1,6 +1,6 @@
-package com.example.mypractice.rest
+package com.example.mypractice.data.remote
 
-import com.example.mypractice.models.UnsplashPhoto
+import com.example.mypractice.domain.model.UnsplashPhoto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

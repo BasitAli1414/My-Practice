@@ -1,4 +1,4 @@
-package com.example.mypractice.room
+package com.example.mypractice.data.local
 
 import androidx.room.Embedded
 import androidx.room.Entity

@@ -1,8 +1,8 @@
-package com.example.mypractice.mappers
+package com.example.mypractice.data.mapper
 
 
-import com.example.mypractice.models.UnsplashPhoto
-import com.example.mypractice.room.UnsplashPhotoEntity
+import com.example.mypractice.domain.model.UnsplashPhoto
+import com.example.mypractice.data.local.UnsplashPhotoEntity
 
 // Convert API model to Room entity
 fun UnsplashPhoto.toEntity(): UnsplashPhotoEntity = UnsplashPhotoEntity(

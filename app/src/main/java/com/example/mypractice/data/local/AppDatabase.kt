@@ -1,9 +1,10 @@
-package com.example.mypractice.room
+package com.example.mypractice.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.mypractice.data.remote.UnsplashPhotoDao
 
 @Database(
     entities = [UnsplashPhotoEntity::class],
