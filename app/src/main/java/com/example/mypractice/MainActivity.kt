@@ -39,7 +39,6 @@ class MainActivity : ComponentActivity() {
 //                )
 
 
-                // Navigation
                 val navController = rememberNavController()
 
                 NavHost(
@@ -47,7 +46,6 @@ class MainActivity : ComponentActivity() {
                     startDestination = "unsplash_list"
                 ) {
 
-                    // Screen 1 → Grid List
                     composable("unsplash_list") {
                         UnsplashScreen(
                             viewModel = viewModel,
@@ -58,7 +56,6 @@ class MainActivity : ComponentActivity() {
                         )
                     }
 
-                    // Screen 2 → Full-screen Image Preview
                     composable(
                         route = "preview/{url}",
                         arguments = listOf(navArgument("url") { type = NavType.StringType })

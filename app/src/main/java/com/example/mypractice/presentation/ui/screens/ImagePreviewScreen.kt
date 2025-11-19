@@ -25,7 +25,6 @@ fun ImagePreviewScreen(
             .fillMaxSize()
             .background(Color.Black)
     ) {
-        // Fullscreen image
         Image(
             painter = rememberAsyncImagePainter(imageUrl),
             contentDescription = null,
@@ -34,7 +33,6 @@ fun ImagePreviewScreen(
                 .fillMaxSize()
         )
 
-        // Optional back button top-left
         IconButton(
             onClick = onBack,
             modifier = Modifier

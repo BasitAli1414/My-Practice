@@ -29,7 +29,6 @@ fun UnsplashScreen(
 
     val photos by viewModel.photos.collectAsState()
 
-    // Load photos only once
     LaunchedEffect(Unit) {
         viewModel.loadPhotos()
     }

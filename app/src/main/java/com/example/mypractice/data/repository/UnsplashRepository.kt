@@ -15,16 +15,13 @@ import javax.inject.Singleton
 
 @Singleton
 class UnsplashRepository @Inject constructor(
-    // DAO (Provided via Database Module)
     private val unsplashPhotoDao: UnsplashPhotoDao,
 
-    // API service (Provided via Network Module)
     private val unsplashApi: ApiInterface,
 
     @ApplicationContext private val context: Context
 ) {
     fun getPhotos(page: Int = 1, perPage: Int = 30) = flow {
-        // NetworkUtils now uses the injected Context
         val isConnected = NetworkUtils.isInternetAvailable(context)
 
         if (isConnected) {
