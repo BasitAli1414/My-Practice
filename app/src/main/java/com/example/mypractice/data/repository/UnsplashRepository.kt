@@ -1,4 +1,4 @@
-package com.example.mypractice.domain.repository
+package com.example.mypractice.data.repository
 
 import android.content.Context
 import com.example.mypractice.data.mapper.toEntity

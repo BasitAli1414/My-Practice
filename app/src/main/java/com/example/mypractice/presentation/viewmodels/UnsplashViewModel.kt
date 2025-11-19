@@ -3,7 +3,7 @@ package com.example.mypractice.presentation.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.mypractice.domain.model.UnsplashPhoto
-import com.example.mypractice.domain.repository.UnsplashRepository
+import com.example.mypractice.data.repository.UnsplashRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
