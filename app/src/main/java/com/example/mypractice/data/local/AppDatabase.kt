@@ -7,12 +7,19 @@ import androidx.room.RoomDatabase
 import com.example.mypractice.data.remote.UnsplashPhotoDao
 
 @Database(
-    entities = [UnsplashPhotoEntity::class],
-    version = 1,
+    entities = [
+        UnsplashPhotoEntity::class,
+        RemoteKeys::class
+               ],
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
+
     abstract fun unsplashPhotoDao(): UnsplashPhotoDao
+
+    abstract fun remoteKeysDao(): RemoteKeysDao
+
 
     companion object {
         @Volatile

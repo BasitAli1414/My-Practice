@@ -1,6 +1,3 @@
-import org.gradle.api.internal.changedetection.changes.DefaultTaskExecutionMode.incremental
-import org.gradle.kotlin.dsl.implementation
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -75,6 +72,11 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.paging.compose)
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.room)
+
 
     // Hilt
     implementation(libs.hilt.android)

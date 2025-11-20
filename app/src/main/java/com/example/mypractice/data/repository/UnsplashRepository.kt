@@ -1,18 +1,18 @@
 package com.example.mypractice.data.repository
 
-import android.content.Context
-import com.example.mypractice.data.mapper.toEntity
-import com.example.mypractice.data.mapper.toModel
+import androidx.paging.ExperimentalPagingApi
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import com.example.mypractice.data.local.AppDatabase
+import com.example.mypractice.data.local.UnsplashPhotoEntity
+import com.example.mypractice.data.paging.UnsplashRemoteMediator
 import com.example.mypractice.data.remote.ApiInterface
-import com.example.mypractice.data.remote.UnsplashPhotoDao
-import com.example.mypractice.util.NetworkUtils
-import dagger.hilt.android.qualifiers.ApplicationContext
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 import javax.inject.Singleton
 
+/*
 @Singleton
 class UnsplashRepository @Inject constructor(
     private val unsplashPhotoDao: UnsplashPhotoDao,
@@ -33,4 +33,19 @@ class UnsplashRepository @Inject constructor(
             emit(cachedPhotos)
         }
     }.flowOn(Dispatchers.IO)
+}*/
+
+@OptIn(ExperimentalPagingApi::class)
+@Singleton
+class UnsplashRepository @Inject constructor(
+    private val db: AppDatabase,
+    private val api: ApiInterface
+) {
+    fun getPagedPhotos(): Flow<PagingData<UnsplashPhotoEntity>> {
+        return Pager(
+            config = PagingConfig(pageSize = 30),
+            remoteMediator = UnsplashRemoteMediator(api, db),
+            pagingSourceFactory = { db.unsplashPhotoDao().pagingSource() }
+        ).flow
+    }
 }
