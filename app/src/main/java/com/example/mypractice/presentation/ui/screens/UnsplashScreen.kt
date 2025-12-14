@@ -13,6 +13,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.vector.DefaultFillType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -24,6 +26,7 @@ import com.example.mypractice.presentation.viewmodels.UnsplashViewModel
 import androidx.compose.ui.res.painterResource
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import coil.size.Scale
 import com.example.mypractice.R
 
 
@@ -92,25 +95,33 @@ fun UnsplashScreen(
                         }
                 ) {
 
-                    AsyncImage(
-                        model = ImageRequest.Builder(LocalContext.current)
-                            .data(it.urls.small)
-                            .crossfade(true)
-                            .size(256)
-                            .build(),
-                        placeholder = painterResource(R.drawable.placeholder),
-                        contentDescription = it.description,
-                        modifier = Modifier.size(100.dp)
-                    )
+                    if (it.urls.small.isNotEmpty() && it.description!=null && it.description.isNotEmpty()){
+                        AsyncImage(
+                            model = ImageRequest.Builder(LocalContext.current)
+                                .data(it.urls.small)
+                                .crossfade(true)
+                                .size(250)
+                                .build(),
+                            placeholder = painterResource(R.drawable.placeholder),
+                            contentDescription = it.description,
+                            modifier = Modifier.size(100.dp, 100.dp)
+                                .fillMaxWidth()
+                                .fillMaxSize()
+                        )
 
 
-                    Spacer(modifier = Modifier.width(8.dp))
+                        Spacer(modifier = Modifier.width(8.dp))
 
-                    Text(
-                        text = it.description ?: "No description",
-                        modifier = Modifier
-                            .align(Alignment.CenterVertically)
-                    )
+                        Text(
+                            text = it.description ?: "No description",
+                            minLines = 1,
+                            maxLines = 1,
+                            modifier = Modifier
+                                .align(Alignment.CenterVertically)
+                        )
+                    }
+
+
                 }
             }
         }
